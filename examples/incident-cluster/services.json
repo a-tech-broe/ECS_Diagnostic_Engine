@@ -1,0 +1,177 @@
+{
+  "services": [
+    {
+      "serviceName": "payments-api",
+      "status": "ACTIVE",
+      "desiredCount": 4,
+      "runningCount": 4,
+      "pendingCount": 0,
+      "launchType": "FARGATE",
+      "platformVersion": "1.4.0",
+      "healthCheckGracePeriodSeconds": 60,
+      "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/payments-api:142",
+      "createdAt": "-180d",
+      "deployments": [
+        {
+          "id": "ecs-svc/1042",
+          "status": "PRIMARY",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/payments-api:142",
+          "desiredCount": 4,
+          "runningCount": 4,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "rolloutState": "COMPLETED",
+          "createdAt": "-6m",
+          "updatedAt": "-2m"
+        },
+        {
+          "id": "ecs-svc/1041",
+          "status": "ACTIVE",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/payments-api:141",
+          "desiredCount": 0,
+          "runningCount": 0,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "createdAt": "-2d"
+        }
+      ],
+      "events": [
+        {"createdAt": "-5m", "message": "(service payments-api) has started 4 tasks: (task 9ac1) (task 9ac2) (task 9ac3) (task 9ac4)."},
+        {"createdAt": "-6m", "message": "(service payments-api) has begun draining connections on 4 tasks."}
+      ],
+      "loadBalancers": [
+        {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:111122223333:targetgroup/payments-api/1a2b3c",
+          "containerName": "payments",
+          "containerPort": 8080
+        }
+      ]
+    },
+    {
+      "serviceName": "checkout-api",
+      "status": "ACTIVE",
+      "desiredCount": 4,
+      "runningCount": 2,
+      "pendingCount": 0,
+      "launchType": "FARGATE",
+      "healthCheckGracePeriodSeconds": 60,
+      "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/checkout-api:87",
+      "deployments": [
+        {
+          "id": "ecs-svc/2087",
+          "status": "PRIMARY",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/checkout-api:87",
+          "desiredCount": 4,
+          "runningCount": 2,
+          "pendingCount": 0,
+          "failedTasks": 2,
+          "rolloutState": "IN_PROGRESS",
+          "createdAt": "-4h"
+        }
+      ],
+      "events": [
+        {"createdAt": "-3m", "message": "(service checkout-api) has stopped 2 running tasks: (task abc123) (task def456)."}
+      ],
+      "loadBalancers": [
+        {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:111122223333:targetgroup/checkout-api/4d5e6f",
+          "containerName": "checkout",
+          "containerPort": 8080
+        }
+      ]
+    },
+    {
+      "serviceName": "orders-api",
+      "status": "ACTIVE",
+      "desiredCount": 6,
+      "runningCount": 2,
+      "pendingCount": 0,
+      "launchType": "FARGATE",
+      "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/orders-api:214",
+      "deployments": [
+        {
+          "id": "ecs-svc/3214",
+          "status": "PRIMARY",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/orders-api:214",
+          "desiredCount": 6,
+          "runningCount": 0,
+          "pendingCount": 0,
+          "failedTasks": 11,
+          "rolloutState": "IN_PROGRESS",
+          "rolloutStateReason": "ECS deployment ecs-svc/3214 in progress.",
+          "createdAt": "-14m"
+        },
+        {
+          "id": "ecs-svc/3213",
+          "status": "ACTIVE",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/orders-api:213",
+          "desiredCount": 6,
+          "runningCount": 2,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "createdAt": "-3d"
+        }
+      ],
+      "events": [
+        {"createdAt": "-4m", "message": "(service orders-api) failed to launch a task with (error CannotPullContainerError: pull image manifest has been retried 5 time(s): image orders-api:2.9.0 not found)."},
+        {"createdAt": "-9m", "message": "(service orders-api) failed to launch a task with (error CannotPullContainerError: pull image manifest has been retried 5 time(s): image orders-api:2.9.0 not found)."}
+      ],
+      "loadBalancers": []
+    },
+    {
+      "serviceName": "inventory-api",
+      "status": "ACTIVE",
+      "desiredCount": 3,
+      "runningCount": 3,
+      "pendingCount": 0,
+      "launchType": "FARGATE",
+      "healthCheckGracePeriodSeconds": 30,
+      "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/inventory-api:56",
+      "deployments": [
+        {
+          "id": "ecs-svc/4056",
+          "status": "PRIMARY",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/inventory-api:56",
+          "desiredCount": 3,
+          "runningCount": 3,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "rolloutState": "COMPLETED",
+          "createdAt": "-9m"
+        }
+      ],
+      "events": [],
+      "loadBalancers": [
+        {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:111122223333:targetgroup/inventory-api/7a8b9c",
+          "containerName": "inventory",
+          "containerPort": 8080
+        }
+      ]
+    },
+    {
+      "serviceName": "search-api",
+      "status": "ACTIVE",
+      "desiredCount": 3,
+      "runningCount": 3,
+      "pendingCount": 0,
+      "launchType": "FARGATE",
+      "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/search-api:31",
+      "deployments": [
+        {
+          "id": "ecs-svc/5031",
+          "status": "PRIMARY",
+          "taskDefinition": "arn:aws:ecs:us-east-1:111122223333:task-definition/search-api:31",
+          "desiredCount": 3,
+          "runningCount": 3,
+          "pendingCount": 0,
+          "failedTasks": 0,
+          "rolloutState": "COMPLETED",
+          "createdAt": "-5d"
+        }
+      ],
+      "events": [],
+      "loadBalancers": []
+    }
+  ]
+}

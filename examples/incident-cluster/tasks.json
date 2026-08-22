@@ -1,0 +1,67 @@
+{
+  "payments-api": {
+    "running": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/9ac1", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "startedAt": "-5m",
+       "containers": [{"name": "payments", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512, "image": "111122223333.dkr.ecr.us-east-1.amazonaws.com/payments-api:1.42.0"}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/9ac2", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "startedAt": "-5m",
+       "containers": [{"name": "payments", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/9ac3", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "startedAt": "-5m",
+       "containers": [{"name": "payments", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/9ac4", "lastStatus": "RUNNING", "healthStatus": "HEALTHY", "startedAt": "-5m",
+       "containers": [{"name": "payments", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512}]}
+    ],
+    "stopped": []
+  },
+  "checkout-api": {
+    "running": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/aa11", "lastStatus": "RUNNING", "startedAt": "-2h",
+       "containers": [{"name": "checkout", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/aa12", "lastStatus": "RUNNING", "startedAt": "-2h",
+       "containers": [{"name": "checkout", "lastStatus": "RUNNING", "memory": 1024, "cpu": 512}]}
+    ],
+    "stopped": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/abc123", "lastStatus": "STOPPED", "desiredStatus": "STOPPED",
+       "stoppedReason": "Essential container in task exited", "stopCode": "EssentialContainerExited",
+       "startedAt": "-38m", "stoppedAt": "-3m",
+       "containers": [{"name": "checkout", "lastStatus": "STOPPED", "exitCode": 137, "memory": 1024, "reason": "OutOfMemoryError: Container killed due to memory usage"}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/def456", "lastStatus": "STOPPED", "desiredStatus": "STOPPED",
+       "stoppedReason": "OutOfMemoryError: Container killed due to memory usage", "stopCode": "EssentialContainerExited",
+       "startedAt": "-51m", "stoppedAt": "-7m",
+       "containers": [{"name": "checkout", "lastStatus": "STOPPED", "exitCode": 137, "memory": 1024}]}
+    ]
+  },
+  "orders-api": {
+    "running": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/bb01", "lastStatus": "RUNNING", "startedAt": "-3d",
+       "containers": [{"name": "orders", "lastStatus": "RUNNING", "memory": 2048}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/bb02", "lastStatus": "RUNNING", "startedAt": "-3d",
+       "containers": [{"name": "orders", "lastStatus": "RUNNING", "memory": 2048}]}
+    ],
+    "stopped": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/cc31", "lastStatus": "STOPPED",
+       "stoppedReason": "CannotPullContainerError: pull image manifest has been retried 5 time(s): image orders-api:2.9.0 not found",
+       "stopCode": "TaskFailedToStart", "stoppedAt": "-4m",
+       "containers": [{"name": "orders", "lastStatus": "STOPPED", "reason": "CannotPullContainerError", "image": "111122223333.dkr.ecr.us-east-1.amazonaws.com/orders-api:2.9.0"}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/cc32", "lastStatus": "STOPPED",
+       "stoppedReason": "CannotPullContainerError: pull image manifest has been retried 5 time(s): image orders-api:2.9.0 not found",
+       "stopCode": "TaskFailedToStart", "stoppedAt": "-8m",
+       "containers": [{"name": "orders", "lastStatus": "STOPPED", "reason": "CannotPullContainerError", "image": "111122223333.dkr.ecr.us-east-1.amazonaws.com/orders-api:2.9.0"}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/cc33", "lastStatus": "STOPPED",
+       "stoppedReason": "CannotPullContainerError: pull image manifest has been retried 5 time(s): image orders-api:2.9.0 not found",
+       "stopCode": "TaskFailedToStart", "stoppedAt": "-12m",
+       "containers": [{"name": "orders", "lastStatus": "STOPPED", "reason": "CannotPullContainerError"}]}
+    ]
+  },
+  "inventory-api": {
+    "running": [
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/dd01", "lastStatus": "RUNNING", "healthStatus": "UNKNOWN", "startedAt": "-9m",
+       "containers": [{"name": "inventory", "lastStatus": "RUNNING", "memory": 512}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/dd02", "lastStatus": "RUNNING", "healthStatus": "UNKNOWN", "startedAt": "-9m",
+       "containers": [{"name": "inventory", "lastStatus": "RUNNING", "memory": 512}]},
+      {"taskArn": "arn:aws:ecs:us-east-1:111122223333:task/prod/dd03", "lastStatus": "RUNNING", "healthStatus": "UNKNOWN", "startedAt": "-9m",
+       "containers": [{"name": "inventory", "lastStatus": "RUNNING", "memory": 512}]}
+    ],
+    "stopped": []
+  },
+  "search-api": {"running": [], "stopped": []}
+}

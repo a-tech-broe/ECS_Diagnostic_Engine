@@ -1,0 +1,45 @@
+{
+  "payments-api": {
+    "level_counts": {"INFO": 184220, "WARN": 6120, "ERROR": 4413},
+    "top_errors": [
+      {"text": "Connection pool exhausted: timeout acquiring connection from pool after 5000ms", "count": 3128},
+      {"text": "Database timeout exceeded while executing statement", "count": 964},
+      {"text": "Upstream ledger-service returned 503", "count": 321}
+    ],
+    "top_exceptions": [
+      {"text": "org.postgresql.util.PSQLException: connection timed out", "count": 1044},
+      {"text": "java.util.concurrent.TimeoutException", "count": 402}
+    ],
+    "sample_messages": [
+      "HikariPool-1 - Connection is not available, request timed out after 5001ms",
+      "payment capture failed: read timed out talking to ledger-service"
+    ]
+  },
+  "checkout-api": {
+    "level_counts": {"INFO": 51200, "WARN": 900, "ERROR": 612},
+    "top_errors": [
+      {"text": "java.lang.OutOfMemoryError: Java heap space", "count": 402},
+      {"text": "Failed to allocate buffer for order batch", "count": 118}
+    ],
+    "top_exceptions": [{"text": "java.lang.OutOfMemoryError", "count": 402}],
+    "sample_messages": ["GC overhead limit exceeded; heap at 1013MB of 1024MB"]
+  },
+  "orders-api": {
+    "level_counts": {"INFO": 2100, "ERROR": 33},
+    "top_errors": [{"text": "container startup aborted before application boot", "count": 33}],
+    "top_exceptions": [],
+    "sample_messages": []
+  },
+  "inventory-api": {
+    "level_counts": {"INFO": 22400, "ERROR": 5310},
+    "top_errors": [{"text": "GET /healthz -> 503 (dependency check failed: redis unreachable)", "count": 5301}],
+    "top_exceptions": [{"text": "redis.clients.jedis.exceptions.JedisConnectionException", "count": 5290}],
+    "sample_messages": ["health endpoint reporting DOWN: redis connection refused"]
+  },
+  "search-api": {
+    "level_counts": {"INFO": 91000, "ERROR": 4},
+    "top_errors": [],
+    "top_exceptions": [],
+    "sample_messages": []
+  }
+}

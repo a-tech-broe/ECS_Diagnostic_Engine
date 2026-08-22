@@ -1,0 +1,51 @@
+{
+  "payments-api": {
+    "cpu_pct": {"value": 62.4, "baseline": 45.2, "series": [["-14m", 44.8], ["-10m", 46.1], ["-5m", 58.9], ["-3m", 61.7], ["-1m", 62.4]]},
+    "memory_pct": {"value": 71.5, "baseline": 68.0},
+    "memory_bytes": {"value": 768000000},
+    "request_rate": {"value": 46.4, "baseline": 44.9},
+    "error_rate": {"value": 3.16, "baseline": 0.02, "series": [["-14m", 0.02], ["-8m", 0.02], ["-4m", 1.9], ["-2m", 3.0], ["-1m", 3.16]]},
+    "latency_p50": {"value": 0.24},
+    "latency_p95": {"value": 3.4, "baseline": 0.31, "series": [["-14m", 0.30], ["-9m", 0.32], ["-5m", 1.8], ["-3m", 3.1], ["-1m", 3.4]]},
+    "latency_p99": {"value": 8.2},
+    "restarts": {"value": 0},
+    "availability": {"value": 100.0}
+  },
+  "checkout-api": {
+    "cpu_pct": {"value": 41.0, "baseline": 38.0},
+    "memory_pct": {"value": 96.2, "baseline": 74.0},
+    "memory_bytes": {"value": 1032000000},
+    "request_rate": {"value": 12.1, "baseline": 12.4},
+    "error_rate": {"value": 0.09, "baseline": 0.05},
+    "latency_p95": {"value": 0.42, "baseline": 0.33},
+    "restarts": {"value": 8, "series": [["-12m", 0], ["-7m", 3], ["-3m", 8]]},
+    "availability": {"value": 50.0}
+  },
+  "orders-api": {
+    "cpu_pct": {"value": 22.0, "baseline": 55.0},
+    "memory_pct": {"value": 31.0, "baseline": 60.0},
+    "request_rate": {"value": 4.2, "baseline": 18.9},
+    "error_rate": {"value": 0.4, "baseline": 0.01},
+    "latency_p95": {"value": 0.29, "baseline": 0.27},
+    "restarts": {"value": 11, "series": [["-13m", 0], ["-9m", 4], ["-4m", 11]]},
+    "availability": {"value": 33.3}
+  },
+  "inventory-api": {
+    "cpu_pct": {"value": 18.0, "baseline": 17.0},
+    "memory_pct": {"value": 40.0, "baseline": 39.0},
+    "request_rate": {"value": 5.9, "baseline": 6.0},
+    "error_rate": {"value": 5.9, "baseline": 0.0},
+    "latency_p95": {"value": 0.04, "baseline": 0.04},
+    "restarts": {"value": 0},
+    "availability": {"value": 100.0}
+  },
+  "search-api": {
+    "cpu_pct": {"value": 31.0, "baseline": 30.0},
+    "memory_pct": {"value": 55.0, "baseline": 54.0},
+    "request_rate": {"value": 88.0, "baseline": 86.0},
+    "error_rate": {"value": 0.01, "baseline": 0.01},
+    "latency_p95": {"value": 0.12, "baseline": 0.12},
+    "restarts": {"value": 0},
+    "availability": {"value": 100.0}
+  }
+}

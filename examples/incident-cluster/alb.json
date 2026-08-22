@@ -1,0 +1,31 @@
+{
+  "payments-api": {
+    "target_groups": [{"target_group_arn": "arn:...:targetgroup/payments-api/1a2b3c", "target_group_name": "payments-api", "healthy": 4, "unhealthy": 0}],
+    "request_count": 41820,
+    "http_4xx": 210,
+    "http_5xx": 2844,
+    "target_5xx": 2810,
+    "target_connection_errors": 96,
+    "target_response_time_p95": 3.4
+  },
+  "checkout-api": {
+    "target_groups": [{"target_group_arn": "arn:...:targetgroup/checkout-api/4d5e6f", "target_group_name": "checkout-api", "healthy": 2, "unhealthy": 0}],
+    "request_count": 9100,
+    "http_4xx": 44,
+    "http_5xx": 61,
+    "target_response_time_p95": 0.31
+  },
+  "inventory-api": {
+    "target_groups": [{
+      "target_group_arn": "arn:...:targetgroup/inventory-api/7a8b9c",
+      "target_group_name": "inventory-api",
+      "healthy": 0,
+      "unhealthy": 3,
+      "unhealthy_reasons": ["Health checks failed with these codes: [503]"]
+    }],
+    "request_count": 5300,
+    "http_4xx": 12,
+    "http_5xx": 5300,
+    "target_response_time_p95": 0.04
+  }
+}

@@ -1,0 +1,57 @@
+# ECS SRE Diagnostic Engine — example configuration.
+# Copy to sre.yaml (or sre.json) in the working directory, ~/.config/sre-ecs/, or $HOME.
+# Secrets are better supplied by environment variable: PROMETHEUS_URL, PROMETHEUS_TOKEN,
+# SPLUNK_URL, SPLUNK_TOKEN, SPLUNK_USERNAME, SPLUNK_PASSWORD, AWS_REGION, ECS_CLUSTER.
+
+window_minutes: 15
+
+aws:
+  region: us-east-1
+  cluster: production
+  include_alb: true          # target health from elbv2 + request metrics from CloudWatch
+  max_stopped_tasks: 50
+  max_events: 30
+
+prometheus:
+  url: https://prometheus.internal:9090
+  baseline_offset: 24h       # baselines are the same query evaluated 24h earlier
+  timeout_seconds: 15
+  # Metric names vary between deployments — override any of these.
+  # Placeholders: {service} {cluster} {window} {baseline}
+  queries:
+    cpu_pct: 'avg(rate(container_cpu_usage_seconds_total{{container_label_com_amazonaws_ecs_service_name="{service}"}}[{window}])) * 100'
+    memory_pct: 'max(container_memory_working_set_bytes{{container_label_com_amazonaws_ecs_service_name="{service}"}} / container_spec_memory_limit_bytes{{container_label_com_amazonaws_ecs_service_name="{service}"}}) * 100'
+    restarts: 'sum(increase(container_start_time_seconds{{container_label_com_amazonaws_ecs_service_name="{service}"}}[{window}]))'
+    request_rate: 'sum(rate(http_requests_total{{service="{service}"}}[{window}]))'
+    error_rate: 'sum(rate(http_requests_total{{service="{service}",status=~"5.."}}[{window}]))'
+    latency_p95: 'histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{{service="{service}"}}[{window}])) by (le))'
+
+splunk:
+  url: https://splunk.internal:8089
+  index: production
+  timeout_seconds: 60
+  # Placeholders: {service} {index} {window}
+  queries:
+    levels: 'search index={index} service="{service}" earliest=-{window} | stats count by level | sort - count'
+    errors: 'search index={index} service="{service}" level=ERROR earliest=-{window} | stats count by error | sort - count | head 10'
+    exceptions: 'search index={index} service="{service}" earliest=-{window} | stats count by exception | sort - count | head 10'
+
+thresholds:
+  cpu_high_pct: 85
+  cpu_critical_pct: 95
+  memory_high_pct: 85
+  memory_critical_pct: 95
+  latency_p95_seconds: 1.0
+  latency_increase_pct: 100
+  error_rate_pct: 2.0
+  error_rate_critical_pct: 10.0
+  restart_count: 3
+  stopped_task_count: 2
+  oom_count: 1
+  deployment_stuck_minutes: 10
+  deployment_correlation_minutes: 30
+  deployment_failed_tasks: 3
+  unhealthy_target_pct: 20
+
+# disabled_rules:
+#   - cpu_high
